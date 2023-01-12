@@ -17,9 +17,8 @@
                     <button class="btnBoire">Boire</button>
                 </article>
             </div>
-
         </div>
     <?php
     }
-?>
+  ?>
 </section>

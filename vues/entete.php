@@ -21,11 +21,11 @@
 
 	<header>
 		<nav>
-			<a href="#" class="logo"><img src="./img/WineBottle.svg" alt="logo vino"></a>
+			<a href="?requete=accueil" class="logo"><img src="./img/WineBottle.svg" alt="logo vino"></a>
 			<div class="link">
-				<a href="">Mon cellier</a>
-				<a href="">Ajouter une bouteille au cellier</a>
-				<a href="">Déconnexion</a>
+				<a href="?requete=accueil">Mon cellier</a>
+				<a href="?requete=ajouterNouvelleBouteilleCellier">Ajouter une bouteille au cellier</a>
+				<!--<a href="">Déconnexion</a>-->
 			</div>
 		</nav>
 	</header>
