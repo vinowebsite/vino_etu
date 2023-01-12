@@ -13,7 +13,7 @@ const BaseURL = document.baseURI;
 console.log(BaseURL);
 window.addEventListener('load', function () {
   document.querySelectorAll(".btnBoire").forEach(function (element) {
-    console.log(element);
+    // console.log(element);
     element.addEventListener("click", function (evt) {
       let id = evt.target.parentElement.dataset.id;
       let requete = new Request(BaseURL + "index.php?requete=boireBouteilleCellier", { method: 'POST', body: '{"id": ' + id + '}' });
@@ -32,10 +32,43 @@ window.addEventListener('load', function () {
           console.debug(data);
         }).catch(error => {
           console.error(error);
-        });
+      });
     })
 
   });
+
+  //modifier
+
+  document.querySelectorAll(".btnModifier").forEach(function (element) {
+    element.addEventListener("click", function (evt) {
+      let id = evt.target.parentElement.dataset.id;
+      console.log(id);
+      //redirect to a the detail of product page
+      window.location.href = BaseURL + "index.php?requete=pageModifier&id=" + id;
+      
+
+
+
+    //   let requete = new Request(BaseURL + "index.php?requete=modifierBouteilleCellier", { method: 'POST', body: '{"id": ' + id + '}' });
+
+    //   fetch(requete)
+    //     .then(response => {
+    //       if (response.status === 200) {
+    //         return response.json();
+    //       } else {
+    //         throw new Error('Erreur');
+    //       }
+
+    //     })
+    //     .then(data => {
+    //       console.log(data);
+    //     }).catch(error => {
+    //       console.error(error);
+    //     });
+    })
+
+  });
+  //fin modifier
 
   document.querySelectorAll(".btnAjouter").forEach(function (element) {
     element.addEventListener("click", function (evt) {
