@@ -29,6 +29,19 @@ class Bouteille extends Modele {
 		return $rows;
 	}
 	
+	public function getBouteilleCellier($id){
+		$requete = 'SELECT vino__bouteille.nom, vino__bouteille.image, vino__bouteille.pays, vino__type.type AS type_vin
+		FROM vino__bouteille
+		JOIN vino__type
+		ON vino__bouteille.type = vino__type.id
+		WHERE vino__bouteille.id =' .$id ;
+
+		$res = $this->_db->query($requete);
+		$resultat = $res->fetch_assoc();
+		return $resultat;
+
+	}
+
 	public function getListeBouteilleCellier()
 	{
 		
@@ -116,7 +129,6 @@ class Bouteille extends Modele {
 			 
 		}
 		
-		
 		//var_dump($rows);
 		return $rows;
 	}
@@ -167,6 +179,14 @@ class Bouteille extends Modele {
         $res = $this->_db->query($requete);
         
 		return $res;
+	}
+
+	public function modifierBouteilleCellier($id)
+	{
+		// $requete "UPDATE vino__cellier SET quantite";
+		// $res = $this->_db->query($requete);
+
+		// return $res;
 	}
 }
 
