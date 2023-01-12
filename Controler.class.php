@@ -37,6 +37,12 @@ class Controler
 				case 'boireBouteilleCellier':
 					$this->boireBouteilleCellier();
 					break;
+				case 'pageModifier':
+					$this->pageModifier();
+					break;
+				case 'modifierBouteilleCellier':
+					$this->modifierBouteilleCellier();
+					break;
 				default:
 					$this->accueil();
 					break;
@@ -51,6 +57,15 @@ class Controler
 			include("vues/cellier.php");
 			include("vues/pied.php");
                   
+		}
+
+		private function pageModifier(){
+			$bte = new Bouteille();
+			$data = $bte->getBouteilleCellier($_GET['id']);
+			include("vues/entete.php");
+			include("vues/modifier.php");
+			include("vues/pied.php");
+			// echo json_encode($data);
 		}
 		
 
@@ -113,6 +128,14 @@ class Controler
 			echo json_encode($resultat);
 		}
 		
+		private function modifierBouteilleCellier()
+		{
+			$body = json_decode(file_get_contents('php://input'));
+			
+			$bte = new Bouteille();
+			$resultat = $bte->modifierBouteilleCellier($body->id);
+			echo json_encode($resultat);
+		}
 }
 ?>
 
