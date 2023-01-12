@@ -13,21 +13,13 @@
                 <p><a href="<?php echo $bouteille['url_saq'] ?>">Voir SAQ</a></p>
                 <article class="options" data-id="<?php echo $bouteille['id_bouteille_cellier'] ?>">
                     <button class="btnAjouter">Ajouter</button>
-                    <button>Modifier</button>
+                    <button class="btnModifier">Modifier</button>
                     <button class="btnBoire">Boire</button>
                 </article>
             </div>
 
         </div>
     <?php
-
-
-
-
-
     }
-    ?>
-
-
-
+?>
 </section>
