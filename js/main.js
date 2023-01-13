@@ -46,29 +46,39 @@ window.addEventListener('load', function () {
       //redirect to a the detail of product page
       window.location.href = BaseURL + "index.php?requete=pageModifier&id=" + id;
       
-
-
-
-    //   let requete = new Request(BaseURL + "index.php?requete=modifierBouteilleCellier", { method: 'POST', body: '{"id": ' + id + '}' });
-
-    //   fetch(requete)
-    //     .then(response => {
-    //       if (response.status === 200) {
-    //         return response.json();
-    //       } else {
-    //         throw new Error('Erreur');
-    //       }
-
-    //     })
-    //     .then(data => {
-    //       console.log(data);
-    //     }).catch(error => {
-    //       console.error(error);
-    //     });
     })
 
   });
-  //fin modifier
+
+  if(document.querySelector(".btnModifierBouteille")){
+
+    document.querySelector(".btnModifierBouteille").addEventListener("click", function (evt) {
+      evt.preventDefault();
+      let id = document.querySelector("[name='id']").value;
+      let nom = document.querySelector("[name='nom']").value;
+      let pays = document.querySelector("[name='pays']").value;
+      let type = document.querySelector("[name='type']").value;
+
+    let requete = new Request("http://localhost/Vino/vino_etu/" + "index.php?requete=modifierBouteilleCellier", { method: 'POST', 
+    body: '{"id": ' + id + ', "nom": "' + nom + '", "pays": "' + pays + '", "type": "' + type + '"}' });
+    
+    fetch(requete)
+    .then(response => {
+        if (response.status === 200) {
+          console.log(response);
+          return response;
+        } else {
+          throw new Error('Erreur');
+        }
+      })
+      .then(data => {
+        // location.reload();
+      }).catch(error => {
+        console.error(error);
+      });
+    });
+  }
+    //fin modifier
 
   document.querySelectorAll(".btnAjouter").forEach(function (element) {
     element.addEventListener("click", function (evt) {
@@ -94,7 +104,6 @@ window.addEventListener('load', function () {
   });
 
   let inputNomBouteille = document.querySelector("[name='nom_bouteille']");
-  console.log(inputNomBouteille);
   let liste = document.querySelector('.listeAutoComplete');
 
   if (inputNomBouteille) {
