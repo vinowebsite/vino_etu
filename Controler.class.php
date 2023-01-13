@@ -130,26 +130,29 @@ class Controler
 		
 		private function modifierBouteilleCellier()
 		{
+			// $nom = $_GET['nom'];
+			// $pays = $_GET['pays'];
+			// $type = $_GET['type'];
+			// $id = $_GET['id'];
+
+			// if($type == 'Vin rouge'){
+			// 	$type = 1;
+			// }
+			// else if($type == 'Vin blanc'){
+			// 	$type = 2;
+			// }
+
+			// $bte = new Bouteille();
+			// $bte->modifierBouteilleCellier($id, $nom, $pays, $type);
+			// header('Location: index.php');
+			// $this->accueil();
+
 			$body = json_decode(file_get_contents('php://input'));
 			
 			$bte = new Bouteille();
-			$resultat = $bte->modifierBouteilleCellier($body->id);
+			$resultat = $bte->modifierBouteilleCellier($body->id, $body->nom, $body->pays, $body->type);
 			echo json_encode($resultat);
+			
 		}
 }
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
