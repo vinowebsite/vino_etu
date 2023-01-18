@@ -9,7 +9,7 @@
  */
 
 //const BaseURL = "https://jmartel.webdev.cmaisonneuve.qc.ca/n61/vino/";
-const BaseURL = document.baseURI;
+const BaseURL = "http://localhost:81/vino_etu/"/* document.baseURI */;
 console.log(BaseURL);
 window.addEventListener('load', function () {
   document.querySelectorAll(".btnBoire").forEach(function (element) {
@@ -32,7 +32,7 @@ window.addEventListener('load', function () {
           console.debug(data);
         }).catch(error => {
           console.error(error);
-      });
+        });
     })
 
   });
@@ -45,12 +45,12 @@ window.addEventListener('load', function () {
       console.log(id);
       //redirect to a the detail of product page
       window.location.href = BaseURL + "index.php?requete=pageModifier&id=" + id;
-      
+
     })
 
   });
 
-  if(document.querySelector(".btnModifierBouteille")){
+  if (document.querySelector(".btnModifierBouteille")) {
 
     document.querySelector(".btnModifierBouteille").addEventListener("click", function (evt) {
       evt.preventDefault();
@@ -59,26 +59,28 @@ window.addEventListener('load', function () {
       let pays = document.querySelector("[name='pays']").value;
       let type = document.querySelector("[name='type']").value;
 
-    let requete = new Request("http://localhost/Vino/vino_etu/" + "index.php?requete=modifierBouteilleCellier", { method: 'POST', 
-    body: '{"id": ' + id + ', "nom": "' + nom + '", "pays": "' + pays + '", "type": "' + type + '"}' });
-    
-    fetch(requete)
-    .then(response => {
-        if (response.status === 200) {
-          console.log(response);
-          return response;
-        } else {
-          throw new Error('Erreur');
-        }
-      })
-      .then(data => {
-        // location.reload();
-      }).catch(error => {
-        console.error(error);
+      let requete = new Request("http://localhost/Vino/vino_etu/" + "index.php?requete=modifierBouteilleCellier", {
+        method: 'POST',
+        body: '{"id": ' + id + ', "nom": "' + nom + '", "pays": "' + pays + '", "type": "' + type + '"}'
       });
+
+      fetch(requete)
+        .then(response => {
+          if (response.status === 200) {
+            console.log(response);
+            return response;
+          } else {
+            throw new Error('Erreur');
+          }
+        })
+        .then(data => {
+          // location.reload();
+        }).catch(error => {
+          console.error(error);
+        });
     });
   }
-    //fin modifier
+  //fin modifier
 
   document.querySelectorAll(".btnAjouter").forEach(function (element) {
     element.addEventListener("click", function (evt) {
@@ -178,7 +180,7 @@ window.addEventListener('load', function () {
             }
           })
           .then(response => {
-            console.log(response);
+            location.href = BaseURL;
           }).catch(error => {
             console.error(error);
           });
